@@ -7,7 +7,7 @@
 
 This project investigates how different levels of label granularity—ranging from **fine-grained diagnostic codes** to **coarse severity-based tiers**—affect the performance, generalizability, and interpretability of ECG classifiers.
 
-A 1D ResNet model was trained on the SPH dataset (25,770 ECGs) using three labeling strategies:
+A 1D ResNet model was trained on the SPH dataset (25,770 ECGs) using three labeling strategies and validated on an external PTB-XL cohort:
 - **44-class** AHA diagnostic codes  
 - **3-tier** severity system: `Normal`, `Monitor`, `Serious`  
 - **4-tier** severity system: `Normal`, `Mild`, `Moderate`, `Serious`
