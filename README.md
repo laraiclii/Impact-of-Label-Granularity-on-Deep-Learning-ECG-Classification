@@ -1,31 +1,27 @@
-🫀 ECG Label Granularity: Deep Learning for Robust Triage
+🫀 ECG Label Granularity & Deep Learning
+Exploring the impact of diagnostic label resolution on ECG classification performance using deep neural networks.
 
-Exploring how label granularity affects ECG classification performance, generalizability, and clinical utility using deep learning.
+📌 Summary
+This project investigates how different levels of label granularity—ranging from fine-grained diagnostic codes to coarse severity-based tiers—affect the performance, generalizability, and interpretability of ECG classifiers. Using a 1D ResNet model trained on the SPH dataset (25,770 ECGs), three labeling strategies were compared:
 
-📚 Overview
-Deep learning has shown strong potential in automating the interpretation of electrocardiograms (ECGs). However, the impact of label granularity—ranging from detailed arrhythmia-specific codes to broader severity-based categories—has not been thoroughly studied.
+44-class AHA diagnostic codes
 
-In clinical triage settings like primary care, where models must remain robust to noise, artifacts, and patient variability, coarse labels may be more practical than fine-grained diagnostic codes.
+3-tier severity system (Normal, Monitor, Serious)
 
-This project investigates the trade-offs between diagnostic precision and model robustness using a 1D ResNet trained under different labeling schemes.
-While deep learning has shown promise in automating ECG interpretation, the choice between fine-grained diagnostic codes and broader, severity-based labels remains underexplored—especially in real-world settings like primary care, where robustness to noise and patient variability is critical.
+4-tier severity system (Normal, Mild, Moderate, Serious)
 
-We trained a 1D ResNet on the SPH dataset (25,770 ECGs) using three labeling strategies:
+💡 Key Findings
+The 3-tier model achieved the best robustness:
 
-44-class American Heart Association (AHA) diagnostic codes
+87% accuracy (F1 = 0.87) on internal test set
 
-3-tier severity-based classification
+60.5% accuracy on external PTB-XL test set
 
-4-tier hierarchical classification
+The 4-tier model preserved more diagnostic nuance with only a 2% accuracy drop.
 
-Models were evaluated on internal (SPH) and external (PTB-XL) test sets, with additional analysis of rare and unseen pathologies.
+Fine-grained models showed high internal accuracy but failed to generalize to rare pathologies (F1 = 0 externally).
 
-Key Findings
-The 3-tier model showed the best generalization (F1 = 0.87 internal, 60.5% external).
-
-The 44-class model failed to generalize to rare conditions (external F1 = 0).
-
-The 4-tier model preserved diagnostic nuance with only a 2% drop in accuracy.
+Grad-CAM visualizations revealed that coarse-label models focus on clinically relevant ECG segments, while fine-grained ones overfit to noise.
 
 Interpretability analysis revealed that severity-tiered models attended to clinically relevant ECG features, while fine-grained models were more prone to overfitting on noise.
 
